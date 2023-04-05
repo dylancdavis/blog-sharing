@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 const BlogItem = ({ blog, handleBlogDelete }) => {
-  const username = JSON.parse(localStorage.getItem("loggedInUser")).username;
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  const username = loggedInUser ? JSON.parse(loggedInUser).username : null;
 
   return (
     <tr className="blog">
