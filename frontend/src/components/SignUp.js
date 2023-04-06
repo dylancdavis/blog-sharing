@@ -1,13 +1,18 @@
 import { useState } from "react";
 import userService from "../services/users";
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ notificationMessage }) => {
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
+  const handleNameChange = (e) => setName(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+
+  const navigate = useNavigate();
 
   const disableSubmit = !username || !password;
 
@@ -18,10 +23,13 @@ const SignUp = ({ notificationMessage }) => {
     );
 
     try {
-      const user = await userService.create({ username, password });
+      const user = await userService.create({ username, name, password });
       console.log("Signup successful, with user", user);
-      notificationMessage(`New account ${user.username} created`, "success");
-      // TODO: reroute to login page
+      notificationMessage(
+        `New account ${user.username} (${user.name}) created`,
+        "success"
+      );
+      navigate("/");
     } catch (e) {
       console.log(e.name, e.message);
       notificationMessage(e.response.data.error, "danger");
@@ -38,6 +46,14 @@ const SignUp = ({ notificationMessage }) => {
             className="input-username"
             value={username}
             onChange={handleUsernameChange}
+          />
+        </Form.Group>
+        <Form.Group className="mt-3">
+          <Form.Label>Display Name</Form.Label>
+          <Form.Control
+            className="input-name"
+            value={name}
+            onChange={handleNameChange}
           />
         </Form.Group>
         <Form.Group className="mt-3">
