@@ -14,7 +14,7 @@ const BlogItem = ({ blog, handleBlogDelete }) => {
       <td>
         {username === blog.user.username && (
           <Button
-            className="delete-button"
+            className="btn-outline-primary"
             onClick={() => handleBlogDelete(blog)}
           >
             Delete Blog
