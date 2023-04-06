@@ -25,6 +25,8 @@ app.use(express.json());
 app.use(tokenFromReqest);
 app.use(userExtractor);
 
+app.use(express.static("build"));
+
 app.use("/api/blogs", blogsRouter);
 app.use("/api/users", userRouter);
 app.use("/api/login", loginRouter);
