@@ -130,7 +130,16 @@ const App = () => {
           </Routes>
         </div>
       ) : (
-        <Login notificationMessage={notificationMessage} />
+        <Routes>
+          <Route
+            path="/"
+            element={<Login notificationMessage={notificationMessage} />}
+          />
+          <Route
+            path="/signup"
+            element={<SignUp notificationMessage={notificationMessage} />}
+          />
+        </Routes>
       )}
     </div>
   );
