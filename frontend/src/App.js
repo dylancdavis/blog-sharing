@@ -132,7 +132,7 @@ const App = () => {
       ) : (
         <Routes>
           <Route
-            path="/"
+            path="/*"
             element={<Login notificationMessage={notificationMessage} />}
           />
           <Route
