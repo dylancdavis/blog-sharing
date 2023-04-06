@@ -9,6 +9,8 @@ const SignUp = ({ notificationMessage }) => {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
+  const disableSubmit = !username || !password;
+
   const handleSignup = async (e) => {
     e.preventDefault();
     console.log(
@@ -18,17 +20,17 @@ const SignUp = ({ notificationMessage }) => {
     try {
       const user = await userService.create({ username, password });
       console.log("Signup successful, with user", user);
-      notificationMessage(`New account ${user.name} created`, "success");
+      notificationMessage(`New account ${user.username} created`, "success");
       // TODO: reroute to login page
     } catch (e) {
       console.log(e.name, e.message);
-      notificationMessage(`Error: ${e.message}`, "danger");
+      notificationMessage(e.response.data.error, "danger");
     }
   };
 
   return (
-    <div className="signup">
-      <h1>create account</h1>
+    <div className="login">
+      <h1>sign up!</h1>
       <Form onSubmit={handleSignup}>
         <Form.Group className="mt-3">
           <Form.Label>Username</Form.Label>
@@ -46,7 +48,11 @@ const SignUp = ({ notificationMessage }) => {
             onChange={handlePasswordChange}
           />
         </Form.Group>
-        <Button className="submit-button mt-3" type="submit">
+        <Button
+          disabled={disableSubmit}
+          className="submit-button mt-3"
+          type="submit"
+        >
           Create Account
         </Button>
       </Form>
