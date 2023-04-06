@@ -15,7 +15,7 @@ import { Routes, Route, useMatch } from "react-router-dom";
 import User from "./components/User";
 import BlogPage from "./components/BlogPage";
 
-import Header from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import Notification from "./components/Notification";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
@@ -102,7 +102,7 @@ const App = () => {
       <Notification />
       {user ? (
         <div>
-          <Header user={user} handleLogout={handleLogout} />
+          <Navbar user={user} handleLogout={handleLogout} />
           <Routes>
             <Route
               path="/"
