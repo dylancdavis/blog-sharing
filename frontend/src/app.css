@@ -8,6 +8,8 @@
 
 .nav {
   background-color: aliceblue;
+  padding: 16px;
+  border-bottom: 1px solid grey;
 }
 
 .login-info {
@@ -20,5 +22,17 @@
 }
 
 .blogs, .users {
-  margin-left: 16px;
+  padding: 16px;
+}
+
+.container {
+  background-color: white;
+  padding: 0px;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  height: 100vh;
+}
+
+body {
+  background-color: #f5f5f5;
 }
