@@ -15,11 +15,11 @@ const morgan = require("morgan");
 
 if (process.env.NODE_ENV === "test" || process.env.NODE_ENV === "development") {
   mongoose.connect(config.MONGO_URI_TEST);
-  app.use(morgan("tiny"));
 } else {
   mongoose.connect(config.MONGO_URI);
 }
 
+app.use(morgan("tiny"));
 app.use(cors());
 app.use(express.json());
 app.use(tokenFromReqest);
