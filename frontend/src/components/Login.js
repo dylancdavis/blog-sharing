@@ -43,6 +43,7 @@ const Login = ({ notificationMessage }) => {
         <Form.Group className="mt-3">
           <Form.Label>Username</Form.Label>
           <Form.Control
+            placeholder="demo"
             className="input-username"
             value={username}
             onChange={handleUsernameChange}
@@ -51,6 +52,7 @@ const Login = ({ notificationMessage }) => {
         <Form.Group className="mt-3">
           <Form.Label>Password</Form.Label>
           <Form.Control
+            placeholder="password"
             className="input-password"
             value={password}
             onChange={handlePasswordChange}
