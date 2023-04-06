@@ -18,6 +18,7 @@ import BlogPage from "./components/BlogPage";
 import Header from "./components/Navbar";
 import Notification from "./components/Notification";
 import Login from "./components/Login";
+import SignUp from "./components/SignUp";
 import Blogs from "./components/Blogs";
 import Users from "./components/Users";
 
@@ -121,6 +122,10 @@ const App = () => {
               element={
                 <BlogPage blog={routedBlog} handleLike={handleBlogLike} />
               }
+            />
+            <Route
+              path="/signup"
+              element={<SignUp notificationMessage={notificationMessage} />}
             />
           </Routes>
         </div>

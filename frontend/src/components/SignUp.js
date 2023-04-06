@@ -1,45 +1,35 @@
 import { useState } from "react";
-import loginService from "../services/login";
-import blogService from "../services/blogs";
-import { useDispatch } from "react-redux";
-import { setUser } from "../reducers/userReducer";
+import userService from "../services/users";
 import { Form, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
-const Login = ({ notificationMessage }) => {
-  const dispatch = useDispatch();
-
+const SignUp = ({ notificationMessage }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     console.log(
-      `Login submitted, username: ${username}, password: ${password}`
+      `Signup submitted, username: ${username}, password: ${password}`
     );
 
     try {
-      const user = await loginService.login({ username, password });
-      window.localStorage.setItem("loggedInUser", JSON.stringify(user));
-      blogService.setToken(user.token);
-      dispatch(setUser(user));
-      setUsername("");
-      setPassword("");
-      console.log("Login successful, with user", user);
-      notificationMessage(`logged in as ${user.name}`, "success");
+      const user = await userService.create({ username, password });
+      console.log("Signup successful, with user", user);
+      notificationMessage(`New account ${user.name} created`, "success");
+      // TODO: reroute to login page
     } catch (e) {
       console.log(e.name, e.message);
-      notificationMessage("Incorrect username or password", "danger");
+      notificationMessage(`Error: ${e.message}`, "danger");
     }
   };
 
   return (
-    <div className="login">
-      <h1>login</h1>
-      <Form onSubmit={handleLogin}>
+    <div className="signup">
+      <h1>create account</h1>
+      <Form onSubmit={handleSignup}>
         <Form.Group className="mt-3">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -57,12 +47,11 @@ const Login = ({ notificationMessage }) => {
           />
         </Form.Group>
         <Button className="submit-button mt-3" type="submit">
-          Login
+          Create Account
         </Button>
       </Form>
-      <Link to={"/signup"}>Create Account</Link>
     </div>
   );
 };
 
-export default Login;
+export default SignUp;
