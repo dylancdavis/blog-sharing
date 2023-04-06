@@ -9,8 +9,8 @@ const BlogItem = ({ blog, handleBlogDelete }) => {
     <tr className="blog">
       <td>
         <Link to={`/blogs/${blog.id}`}>{blog.title}</Link>
-      </td>{" "}
-      <td>{blog.author} </td>
+      </td>
+      <td> {blog.author} </td>
       <td>
         {username === blog.user.username && (
           <Button
