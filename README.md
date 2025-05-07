@@ -11,8 +11,6 @@ Login with these demo credentials to gain access:
 Or, you can create your own example account.
 
 ## Features
-
-At the moment, this application's main features include:
  - Sharing of blogs from a user, indicating its title, author, and link
  - Liking other users' shared blogs
  - Commenting on said shared blogs
