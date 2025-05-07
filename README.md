@@ -1,10 +1,10 @@
 # Overview
 
-An implementation of a basic CRUD application implemented using the MERN stack and deployed using fly.io.
+An implementation of a basic CRUD application implemented using the MERN stack and deployed at fly.io
 
 ![blog-sharing-login-page](https://user-images.githubusercontent.com/104338788/230449682-4994e446-eb21-417b-9e51-d83d1ef42c24.png)
 
-Login with these demo credentials to gain access:
+On the [demo site](https://blog-sharing.fly.dev/), log in with these credentials to gain access:
   - Username: demo
   - Password: password
 
