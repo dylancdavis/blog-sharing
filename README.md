@@ -19,7 +19,7 @@ Or, you can create your own example account.
 
 This application is built using React on the frontend, and Node+Express on the backend, with MongoDB as a database.
 In addition, it relies on the following other technologies:
- - Redux: to better organize blog and user state
- - React Router: to provide routing between login pages, and individual users/blogs
- - Jest & Cypress: for frontend and end-to-end testing
- - Mongoose: to easily interface with the MongoDB server used
+ - Redux: used for centralizing application state
+ - React Router: provide automatic routing between application pages
+ - Jest & Cypress: frontend and end-to-end testing
+ - Mongoose: access to MongoDB database
