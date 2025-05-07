@@ -13,10 +13,15 @@ const errorHandler = require("./utils/errorHandler.js");
 const userExtractor = require("./utils/userExtractor");
 const morgan = require("morgan");
 
-if (process.env.NODE_ENV === "test" || process.env.NODE_ENV === "development") {
-  mongoose.connect(config.MONGO_URI_TEST);
-} else {
-  mongoose.connect(config.MONGO_URI);
+async function connectToDatabase() {
+  if (
+    process.env.NODE_ENV === "test" ||
+    process.env.NODE_ENV === "development"
+  ) {
+    await mongoose.connect(config.MONGO_URI_TEST);
+  } else {
+    await mongoose.connect(config.MONGO_URI);
+  }
 }
 
 app.use(morgan("tiny"));
